@@ -15,10 +15,32 @@
 				c-0.455,0-0.82-0.364-0.82-0.818s0.365-0.82,0.82-0.82h2.841c1.827,0,2.4,1.103,2.715,2.181
 				c0.264,0.898,3.569,12.146,3.821,12.999c0.087,0.188,0.611,1.197,1.688,1.197h10.611c0.451,0,0.818,0.368,0.818,0.818
 				C25.395,21.21,25.027,21.575,24.576,21.575L24.576,21.575z"></path>
-</svg>
+            </svg>
             <ngcart-summary></ngcart-summary>
         </div>
-    </div>
+    </div><div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Sock #1!</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <ul>
+                <li ng-repeat="item in $ctrl.items">
+                    <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ $ctrl.selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <!--This will be the photo that will expand-->
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
+
+</div>
     <hr />
 
     <div ng-show="$ctrl.isVisible">
@@ -29,6 +51,8 @@
                 <p> $1.00</p>
                 <ngcart-addtocart id="item1" name="My Item #1" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
             </div>
+
+
             <div class="col-xs-6 col-sm-3">
                 <h4>Sock #2</h4>
                 <p> $1.00</p>
