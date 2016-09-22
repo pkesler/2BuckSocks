@@ -1,6 +1,7 @@
 body {
     padding-top: 100px;
     color: #005E56;
+    scroll: auto;
 }
 hr {
     margin:40px 0;
