@@ -6,7 +6,10 @@
         'ui.router',
         'ngStorage', 
         'toaster',
-        'firebase'
+        'firebase',
+        'ngAnimate', 
+        'ngSanitize', 
+        'ui.bootstrap'
     ])
 
     .config(function($stateProvider, $urlRouterProvider) {
