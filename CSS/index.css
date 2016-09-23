@@ -21,11 +21,11 @@ span[ng-click] {
     cursor: pointer;
 }
 .switchButton {
-    background-color: #E44D26;
+    background-color: #7C4982;
     height: 35px;
-    color: darkgray;
+    color: white;
     float: right;
-    right: 100px;
+
     margin-top: 50px;
     margin-right: 150px;
     border-radius: 5px;
@@ -78,4 +78,12 @@ span[ng-click] {
 .btn-primary {
     background-color: #7C4982;
     border-color: #7C4982;
+}
+
+p {
+    font-size: 12px;
+}
+
+.product-name {
+    margin: 10px 0 0;
 }
