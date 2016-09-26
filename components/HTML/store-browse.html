@@ -1,6 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
 
+
+
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -48,14 +50,16 @@
     <div>
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
+            <toaster-container></toaster-container>
             <h3 class="modal-title" id="modal-title">{{ $ctrl.selected.item.title }}</h3>
         </div>
         <div class="modal-body" id="modal-body">
-            <img src="img/FullSizeRender.jpg"/>
+            <img style="height: 750px" src="img/FullSizeRender.jpg"/>
             <b>{{ $ctrl.selected.item.Description }}</b>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.pop()">Don't Press Me!!!!!</button>
         </div>
     </script>
     </div>

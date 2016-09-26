@@ -15,23 +15,17 @@
         self.showCart = showCart;
         self.isNotVisible = false;
         self.isVisible = true;
-        self.logOut = User.logout;
+        self.logOut = User.logout();
         self.pop = pop;
-        self.pop2 = pop2;
         self.removeToaster = removeToaster;
         self.Sizes = ["Small", "Medium", "Large"];
 
         function pop () {
-            toaster.pop('success', "Item Added to Cart");
-        }
-
-        function pop2 () {
-            toaster.pop2('success', "Item Removed from Cart");
+            toaster.pop('success', "You are signed out!");
         }
         
         function removeToaster () {
             ngCart.removeItemById(id);
-            pop2();
         }
 
         function showCart() {
@@ -68,30 +62,38 @@
             });
         };
 
-        $ctrl.openComponentModal = function () {
-            var modalInstance = $uibModal.open({
-                animation: $ctrl.animationsEnabled,
-                component: 'modalComponent',
-                resolve: {
-                    items: function () {
-                        return $ctrl.items;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (selectedItem) {
-                $ctrl.selected = selectedItem;
-            }, function () {
-                $log.info('modal-component dismissed at: ' + new Date());
-            });
-        };
+        // $ctrl.openComponentModal = function () {
+        //     var modalInstance = $uibModal.open({
+        //         animation: $ctrl.animationsEnabled,
+        //         component: 'modalComponent',
+        //         resolve: {
+        //             items: function () {
+        //                 return $ctrl.items;
+        //             }
+        //         }
+        //     });
+        //
+        //     modalInstance.result.then(function (selectedItem) {
+        //         $ctrl.selected = selectedItem;
+        //     }, function () {
+        //         $log.info('modal-component dismissed at: ' + new Date());
+        //     });
+        // };
 
 
     }
 
-    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
+    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, items, toaster) {
         var $ctrl = this;
         $ctrl.items = items;
+        
+        $ctrl.pop = pop;
+
+        function pop () {
+            console.log("The pop function");
+            toaster.pop('Failure', "I TOLD YOU NOT TO PRESS ME!");
+        }
+        
         $ctrl.selected = {
             item: $ctrl.items[0]
         };
@@ -112,8 +114,10 @@
             close: '&',
             dismiss: '&'
         },
-        controller: function () {
+        controller: function (toaster) {
             var $ctrl = this;
+
+
 
             $ctrl.$onInit = function () {
                 $ctrl.items = $ctrl.resolve.items;
@@ -122,12 +126,19 @@
                 };
             };
 
+            $ctrl.toast = function () {
+                console.log("The pop function");
+                toaster.pop('success', "I TOLD YOU NOT TO PRESS ME!");
+            };
+
             $ctrl.ok = function () {
                 $ctrl.close({$value: $ctrl.selected.item});
             };
 
             $ctrl.cancel = function () {
+                console.log("HI");
                 $ctrl.dismiss({$value: 'cancel'});
+                $ctrl.toast();
             };
         }
     });
