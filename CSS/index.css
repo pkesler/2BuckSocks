@@ -21,13 +21,11 @@ span[ng-click] {
     cursor: pointer;
 }
 .switchButton {
-    background-color: #E44D26;
+    background-color: #005E56;
     height: 35px;
-    color: darkgray;
-    float: right;
-    right: 100px;
+    color: white;
     margin-top: 50px;
-    margin-right: 150px;
+    margin-right: 20px;
     border-radius: 5px;
 }
 .buyNow {
@@ -76,6 +74,30 @@ span[ng-click] {
 }
 
 .btn-primary {
-    background-color: #7C4982;
-    border-color: #7C4982;
+    background-color: #005E56;
+    border-color: #005E56;
+
+}
+
+p {
+    font-size: 12px;
+}
+
+.product-name {
+    margin: 10px 0 0;
+}
+
+.img-thumbnail {
+    border: transparent;
+    max-width: 100%;
+    height: auto;
+
+}
+
+.btn-primary:hover {
+    background-color: #1C756D;
+}
+
+.switchButton:hover {
+    background-color: #1C756D;
 }
