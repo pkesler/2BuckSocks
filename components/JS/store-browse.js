@@ -6,15 +6,33 @@
         });
 
 
-    function storeBrowseController( ngCart, $uibModal, $log ) {
-        ngCart.setTaxRate(7.5);
-        ngCart.setShipping(2.99);
+    function storeBrowseController( ngCart, $uibModal, $log, User, toaster, sockService) {
+        ngCart.setTaxRate(25.69);
+        ngCart.setShipping(125.99);
 
         var self = this;
 
         self.showCart = showCart;
         self.isNotVisible = false;
         self.isVisible = true;
+        self.logOut = User.logout;
+        self.pop = pop;
+        self.pop2 = pop2;
+        self.removeToaster = removeToaster;
+        self.Sizes = ["Small", "Medium", "Large"];
+
+        function pop () {
+            toaster.pop('success', "Item Added to Cart");
+        }
+
+        function pop2 () {
+            toaster.pop2('success', "Item Removed from Cart");
+        }
+        
+        function removeToaster () {
+            ngCart.removeItemById(id);
+            pop2();
+        }
 
         function showCart() {
             self.isNotVisible = self.isNotVisible ? false : true;
@@ -23,7 +41,7 @@
 
         var $ctrl = this;
 
-        $ctrl.items = ['item1', 'item2', 'item3'];
+        $ctrl.items = sockService.item;
 
         $ctrl.animationsEnabled = true;
 
