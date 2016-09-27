@@ -68,16 +68,18 @@
     <div class="container" ng-show="$ctrl.isVisible">
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items" class="thumbnail">
-                <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
-                <p class="product-name" ng-click="$ctrl.open()">{{ item.title }}</p>
-                <p class="amount"> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="{{ item.id }}" name="{{ item.title }}" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
+            <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items">
+                <div class="thumbnail">
+                    <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
+                    <p class="product-name" ng-click="$ctrl.open()">{{ item.title }}</p>
+                    <p class="amount"> $1.00</p>
+                    <select>
+                        <option>{{ $ctrl.Sizes[0] }}</option>
+                        <option>{{ $ctrl.Sizes[1] }}</option>
+                        <option>{{ $ctrl.Sizes[2] }}</option>
+                    </select>
+                    <ngcart-addtocart id="{{ item.id }}" name="{{ item.title }}" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
+                </div>
             </div>
         </div>
         <hr/>
