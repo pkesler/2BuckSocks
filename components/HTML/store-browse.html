@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#"><img class="brandimg" alt="Brand" src="img/2bucklogo.png"></a>
+            <a class="navbar-brand" href="#"><img class="branding" alt="Brand" src="img/2bucklogo.png"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -66,7 +66,7 @@
     <br/>
 
     <div class="container" ng-show="$ctrl.isVisible">
-        <h3>Socks <span>(Whatever size)</span> </h3>
+
         <div class="row">
             <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items">
                 <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
@@ -224,7 +224,7 @@
                    ng-transclude></a>
             </div>
             <mark ng-show="inCart()">
-                This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+                <p class="cartItem">This item is in your cart. <a class="remove" ng-click="ngCart.removeItemById(id)" style="cursor: pointer">Remove</a></p>
             </mark>
         </div>
     </script>

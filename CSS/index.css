@@ -54,7 +54,7 @@ span[ng-click] {
     margin-top: 10px;
 }
 
-.brandimg {
+.branding {
     height: 100px;
     padding: 0%;
 
@@ -100,4 +100,17 @@ p {
 
 .switchButton:hover {
     background-color: #1C756D;
+}
+
+.thumbnail {
+    border-radius: 5px;
+    height: 450px;
+}
+
+.remove {
+    color: #005E56;
+}
+
+.remove:hover {
+    color: #1C756D;
 }
