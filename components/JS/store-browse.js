@@ -19,6 +19,7 @@
         self.pop = pop;
         self.removeToaster = removeToaster;
         self.Sizes = ["Small", "Medium", "Large"];
+        self.items = sockService.item;
 
         function pop () {
             toaster.pop('success', "You are signed out!");
@@ -35,11 +36,9 @@
 
         var $ctrl = this;
 
-        $ctrl.items = sockService.item;
-
         $ctrl.animationsEnabled = true;
 
-        $ctrl.open = function (size) {
+        $ctrl.open = function (item) {
             var modalInstance = $uibModal.open({
                 animation: $ctrl.animationsEnabled,
                 ariaLabelledBy: 'modal-title',
@@ -47,18 +46,12 @@
                 templateUrl: 'myModalContent.html',
                 controller: 'ModalInstanceCtrl',
                 controllerAs: '$ctrl',
-                size: size,
+                // size: size,
                 resolve: {
-                    items: function () {
-                        return $ctrl.items;
+                    item: function () {
+                        return item;
                     }
                 }
-            });
-
-            modalInstance.result.then(function (selectedItem) {
-                $ctrl.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
             });
         };
 
@@ -83,9 +76,9 @@
 
     }
 
-    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, items, toaster) {
+    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, item, toaster) {
         var $ctrl = this;
-        $ctrl.items = items;
+        $ctrl.item = item;
         
         $ctrl.pop = pop;
 
@@ -94,12 +87,12 @@
             toaster.pop('Failure', "I TOLD YOU NOT TO PRESS ME!");
         }
         
-        $ctrl.selected = {
-            item: $ctrl.items[0]
-        };
+        // $ctrl.selected = {
+        //     item: $ctrl.items[0]
+        // };
 
         $ctrl.ok = function () {
-            $uibModalInstance.close($ctrl.selected.item);
+            $uibModalInstance.close($ctrl.item);
         };
 
         $ctrl.cancel = function () {

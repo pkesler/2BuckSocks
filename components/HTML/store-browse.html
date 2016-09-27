@@ -16,7 +16,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="signedInAbout.html">About</a></li>
                 <li><a href="#">Store</a></li>
                 <li><a href="#" ng-click="$ctrl.logOut">Log Out</a></li>
             </ul>
@@ -49,11 +49,12 @@
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <toaster-container></toaster-container>
-            <h3 class="modal-title" id="modal-title">{{ $ctrl.selected.item.title }}</h3>
+            <h3 class="modal-title" id="modal-title">{{ $ctrl.item.title }}</h3>
         </div>
         <div class="modal-body" id="modal-body">
-            <img style="height: 750px" src="img/FullSizeRender.jpg"/>
-            <b>{{ $ctrl.selected.item.Description }}</b>
+            <!--<div>{{ $ctrl.selected.item.Picture }}</div>-->
+            <img style="height: 750px" src="{{ $ctrl.item.Picture }}"/>
+            <b>{{ $ctrl.item.Description }}</b>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
@@ -62,156 +63,24 @@
     </script>
     </div>
 
-
-
-    <hr />
+    <br/>
 
     <div class="container" ng-show="$ctrl.isVisible">
         <h3>Socks <span>(Whatever size)</span> </h3>
         <div class="row">
-            <div class="col-xs-6 col-sm-3">
-
-                <img  ng-click="$ctrl.open()" src="img/FullSizeRender.jpg" alt="Sock" class="img-thumbnail" style="width:150px;height:150px">
-                <h4>Sock #1</h4>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <img src="img/FullSizeRender_small.jpg" alt="Sock" class="img-thumbnail" >
-                <p class="product-name" ng-click="$ctrl.open()">Green & Orange Smiley Turtle Sock</p>
+            <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items">
+                <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
+                <p class="product-name" ng-click="$ctrl.open()">{{ item.title }}</p>
                 <p class="amount"> $1.00</p>
-                <ngcart-addtocart id="item1" name="My Item #1" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5007_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Scary Mouse Sock</p>
-                <p> $1.00</p>
                 <select>
                     <option>{{ $ctrl.Sizes[0] }}</option>
                     <option>{{ $ctrl.Sizes[1] }}</option>
                     <option>{{ $ctrl.Sizes[2] }}</option>
                 </select>
-                <ngcart-addtocart id="item2" name="My Item #2" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5008_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Makes Your Toes Feel Weird Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item3" name="My Item #3" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5010_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Sexy Bad Hero Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item4" name="My Item #4" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
+                <ngcart-addtocart id="{{ item.id }}" name="{{ item.title }}" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5011_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Grandpa Sock One</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item5" name="My Item #5" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5012_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Lumberjack Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item6" name="My Item #6" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5013_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Hip Chick Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item7" name="My Item #7" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5014_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Grandpa Sock Two</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item8" name="My Item #8" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5015_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Grandpa Sock Three</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item9" name="My Item #9" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5016_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Death Skull Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item10" name="My Item #10" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5017_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Anime Cat Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item11" name="My Item #11" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <img src="img/IMG_5018_small.jpg" alt="Sock" class="img-thumbnail">
-                <p class="product-name" ng-click="$ctrl.open()">Grandma Sock</p>
-                <p> $1.00</p>
-                <select>
-                    <option>{{ $ctrl.Sizes[0] }}</option>
-                    <option>{{ $ctrl.Sizes[1] }}</option>
-                    <option>{{ $ctrl.Sizes[2] }}</option>
-                </select>
-                <ngcart-addtocart id="item12" name="My Item #12" price="1.00" quantity="1" quantity-max="10">Add to Cart</ngcart-addtocart>
-            </div>
-        </div>
+        <hr/>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
