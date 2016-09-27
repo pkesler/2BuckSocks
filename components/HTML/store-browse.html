@@ -68,7 +68,7 @@
     <div class="container" ng-show="$ctrl.isVisible">
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items">
+            <div class="col-xs-6 col-sm-3" ng-repeat="item in $ctrl.items" class="thumbnail">
                 <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
                 <p class="product-name" ng-click="$ctrl.open()">{{ item.title }}</p>
                 <p class="amount"> $1.00</p>
