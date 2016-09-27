@@ -1,6 +1,6 @@
 (function () {
     angular.module('myApp')
-        .component('homePage', {
+        .component('signedInAbout', {
             templateUrl: 'components/HTML/signedInAbout.js',
             controller: homeController
         });

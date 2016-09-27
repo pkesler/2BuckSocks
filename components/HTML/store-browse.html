@@ -16,7 +16,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="signedInAbout.html">About</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="#">Store</a></li>
                 <li><a href="#" ng-click="$ctrl.logOut">Log Out</a></li>
             </ul>
@@ -73,7 +73,7 @@
                     <img ng-click="$ctrl.open(item)" ng-src="{{ item.Picture }}" alt="Sock" class="img-thumbnail" >
                     <p class="product-name" ng-click="$ctrl.open()">{{ item.title }}</p>
                     <p class="amount"> $1.00</p>
-                    <select>
+                    <select class="sizing">
                         <option>{{ $ctrl.Sizes[0] }}</option>
                         <option>{{ $ctrl.Sizes[1] }}</option>
                         <option>{{ $ctrl.Sizes[2] }}</option>

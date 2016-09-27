@@ -13,6 +13,9 @@ h3 span {font-size:14px; display:block;}
 span[ng-click] {
     cursor: pointer;
 }
+.container {
+    margin-top: 40px;
+}
 .summary {
     top: 20px;
 }
@@ -56,7 +59,7 @@ span[ng-click] {
 
 .branding {
     height: 100px;
-    padding: 0%;
+    padding: 0;
 
 }
 
@@ -104,7 +107,7 @@ p {
 
 .thumbnail {
     border-radius: 5px;
-    height: 450px;
+    height: 460px;
 }
 
 .remove {
@@ -113,4 +116,7 @@ p {
 
 .remove:hover {
     color: #1C756D;
+}
+.sizing {
+    margin: 5px 5px 5px 0;
 }
