@@ -11,6 +11,7 @@
         self.login = login;
         self.loginWithEmail = loginWithEmail;
         self.logout = logout;
+        // if displayName is set, user is logged in. if not, user is not logged in
         self.getDisplayName = function() {return userData ? userData.displayName || userData.email : undefined; };
 
         // vm.userData = $localStorage['firebase:authUser:AIzaSyAypNYnz62ffGkJvpYPfQ1e23-CkT8XUCI:[DEFAULT]']; // doesn't work!

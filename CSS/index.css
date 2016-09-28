@@ -22,6 +22,7 @@ span[ng-click] {
 .icon {
     float: left;
     cursor: pointer;
+    margin-top: 15px;
 }
 .switchButton {
     background-color: #005E56;
@@ -119,4 +120,14 @@ p {
 }
 .sizing {
     margin: 5px 5px 5px 0;
+}
+.topSummary {
+    margin-right: 50px;
+}
+.dropdown {
+    margin-right: 50px;
+}
+.cartItem {
+    float: right;
+    margin: -23px 5px 20px 0;
 }

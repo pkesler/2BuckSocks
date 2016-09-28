@@ -2,12 +2,12 @@
     angular.module('myApp')
         .component('homePage', {
             templateUrl: 'components/HTML/home-page.html',
-            controller: homeController
+            controller: homeController,
+            controllerAs: "vm"
         });
 
 
     function homeController(User, $timeout, $state) {
-        console.log('Hi There');
         var vm = this;
         vm.showLogin = false;
         vm.email = undefined;

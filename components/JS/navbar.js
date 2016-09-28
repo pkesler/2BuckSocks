@@ -1,23 +1,12 @@
 (function () {
     angular.module('myApp')
-        .component('loginPage', {
-            templateUrl: 'components/HTML/sign-in-out.html',
-            controller: signInOut,
-            controllerAs: 'vm'
+        .component('navbar', {
+            templateUrl: 'components/HTML/navbar.html',
+            controller: navController
         });
 
 
-    //function signInOut() {
-
-        //this.submit = function() {
-
-            // $location.path('/dashboard');
-
-        //};
-        // return false;
-   // }
-//})();
-    function signInOut(User, $timeout, $state){
+    function navController(User, $timeout, $state) {
         var vm = this;
         vm.showLogin = false;
         vm.email = undefined;
@@ -51,7 +40,6 @@
             User.login(provider)
                 .then(function () {
                     $timeout(function () {
-                        console.log('back from login');
                         vm.displayName = User.getDisplayName();
                         vm.showLogin = false;
                         $state.go('store')
@@ -62,18 +50,15 @@
                 });
         }
 
+        // function logout() {
+        //     console.log('logout nav');
+        //     User.logout();
+        //     vm.displayName = undefined;
+        //     $state.go('home', {}, {reload: true});
+        // }
         function logout() {
             User.logout();
             vm.displayName = undefined;
         }
-
     }
-
-
 })();
-
-
-
-
-
-

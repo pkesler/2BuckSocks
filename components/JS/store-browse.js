@@ -15,7 +15,7 @@
         self.showCart = showCart;
         self.isNotVisible = false;
         self.isVisible = true;
-        self.logOut = User.logout();
+        self.logOut = User.logout;
         self.pop = pop;
         self.removeToaster = removeToaster;
         self.Sizes = ["Small", "Medium", "Large"];
