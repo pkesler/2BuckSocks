@@ -95,7 +95,7 @@ p {
     border: transparent;
     max-width: 100%;
     height: auto;
-
+    cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -130,4 +130,9 @@ p {
 .cartItem {
     float: right;
     margin: -23px 5px 20px 0;
+}
+.raised {
+    height: 35px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
 }
