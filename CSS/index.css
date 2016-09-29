@@ -13,21 +13,23 @@ h3 span {font-size:14px; display:block;}
 span[ng-click] {
     cursor: pointer;
 }
+.container {
+    margin-top: 40px;
+}
 .summary {
     top: 20px;
 }
 .icon {
     float: left;
     cursor: pointer;
+    margin-top: 15px;
 }
 .switchButton {
-    background-color: #E44D26;
+    background-color: #005E56;
     height: 35px;
-    color: darkgray;
-    float: right;
-    right: 100px;
+    color: white;
     margin-top: 50px;
-    margin-right: 150px;
+    margin-right: 20px;
     border-radius: 5px;
 }
 .buyNow {
@@ -56,9 +58,9 @@ span[ng-click] {
     margin-top: 10px;
 }
 
-.brandimg {
+.branding {
     height: 100px;
-    padding: 0%;
+    padding: 0;
 
 }
 
@@ -76,6 +78,61 @@ span[ng-click] {
 }
 
 .btn-primary {
-    background-color: #7C4982;
-    border-color: #7C4982;
+    background-color: #005E56;
+    border-color: #005E56;
+
+}
+
+p {
+    font-size: 12px;
+}
+
+.product-name {
+    margin: 10px 0 0;
+}
+
+.img-thumbnail {
+    border: transparent;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #1C756D;
+}
+
+.switchButton:hover {
+    background-color: #1C756D;
+}
+
+.thumbnail {
+    border-radius: 5px;
+    height: 460px;
+}
+
+.remove {
+    color: #005E56;
+}
+
+.remove:hover {
+    color: #1C756D;
+}
+.sizing {
+    margin: 5px 5px 5px 0;
+}
+.topSummary {
+    margin-right: 50px;
+}
+.dropdown {
+    margin-right: 50px;
+}
+.cartItem {
+    float: right;
+    margin: -23px 5px 20px 0;
+}
+.raised {
+    height: 35px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
 }

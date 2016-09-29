@@ -1,17 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#"><img class="branding" alt="Brand" src="img/2bucklogo.png"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home">Home</a></li>
+                <li><a ng-if="vm.displayName" ui-sref="store">Store</a></li>
+                <!--<li><a ng-click="$ctrl.logout()" ng-if="!vm.displayName">Log Out</a></li>-->
+            </ul>
+
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div class="text-center">
         <img src="img/2bucklogo.png" alt="I am Sock">
     </div>
-    <h1> Your Single Sock source <small>
+    <h1 class="text-center"> Your Single Sock Source <small>
         <a href="http://gulpjs.com/"></a>
         <a href="getbootstrap.com"></a>
         <a href="http://lesscss.org/"></a></small></h1>
     <div>
 
-        <h1>
+        <h3>
             About Us!
-        </h1>
+        </h3>
 
         <p>
             Some people like socks.  Because they like socks, we sell socks.  Some people like socks too much, and they
@@ -24,8 +48,29 @@
 
     </div>
 
-<!--<a ui-sref="login" class="button btn btn-white btn-outline btn-lg btn-rounded">Login</a>-->
-<button ui-sref="login" type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login</button>
+
+<!--<button ng-if="!vm.displayName" ui-sref="login" type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login</button>-->
+<!--<button ng-if="vm.displayName" class="raised" ng-click="vm.logout()">Sign Out</button>-->
+
+    <div class="container text-center">
+        <button ng-if="vm.displayName" class="raised" ng-click="vm.logout()">Sign Out</button>
+        <button ng-if="!vm.displayName" class="raised primary" ng-click="vm.login('google')">Login with Google</button>
+        <button ng-if="!vm.displayName" class="raised primary" ng-click="vm.showEmailLogin()">Login with Email</button>
+    </div>
+
+    <md-content layout-padding ng-show="vm.showLogin">
+        <md-input-container>
+            <label>Email</label>
+            <input type="email" id="email" ng-model="vm.email" required>
+        </md-input-container>
+        <md-input-container>
+            <label for="password">Password</label>
+            <input type="password" id="password" ng-model="vm.password" required>
+        </md-input-container>
+        <md-input-container>
+            <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Login</md-button>
+        </md-input-container>
+    </md-content>
 <ul class="list-group">
     <!--<li ng-repeat="task in tasks" class="list-group-item">{{task}}</li>-->
 </ul>

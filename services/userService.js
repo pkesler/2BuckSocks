@@ -11,7 +11,8 @@
         self.login = login;
         self.loginWithEmail = loginWithEmail;
         self.logout = logout;
-        self.getDisplayName = function() {return userData ? userData.displayName || userData.email : undefined; }
+        // if displayName is set, user is logged in. if not, user is not logged in
+        self.getDisplayName = function() {return userData ? userData.displayName || userData.email : undefined; };
 
         // vm.userData = $localStorage['firebase:authUser:AIzaSyAypNYnz62ffGkJvpYPfQ1e23-CkT8XUCI:[DEFAULT]']; // doesn't work!
         var userData = JSON.parse(localStorage.getItem('firebase:authUser:AIzaSyA7cackwcjIMo4J2rVQJdyDJuZb8vfDpmo:[DEFAULT]'));

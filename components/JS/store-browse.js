@@ -17,21 +17,16 @@
         self.isVisible = true;
         self.logOut = User.logout;
         self.pop = pop;
-        self.pop2 = pop2;
         self.removeToaster = removeToaster;
         self.Sizes = ["Small", "Medium", "Large"];
+        self.items = sockService.item;
 
         function pop () {
-            toaster.pop('success', "Item Added to Cart");
-        }
-
-        function pop2 () {
-            toaster.pop2('success', "Item Removed from Cart");
+            toaster.pop('success', "You are signed out!");
         }
         
         function removeToaster () {
             ngCart.removeItemById(id);
-            pop2();
         }
 
         function showCart() {
@@ -41,11 +36,9 @@
 
         var $ctrl = this;
 
-        $ctrl.items = sockService.item;
-
         $ctrl.animationsEnabled = true;
 
-        $ctrl.open = function (size) {
+        $ctrl.open = function (item) {
             var modalInstance = $uibModal.open({
                 animation: $ctrl.animationsEnabled,
                 ariaLabelledBy: 'modal-title',
@@ -53,51 +46,53 @@
                 templateUrl: 'myModalContent.html',
                 controller: 'ModalInstanceCtrl',
                 controllerAs: '$ctrl',
-                size: size,
+                // size: size,
                 resolve: {
-                    items: function () {
-                        return $ctrl.items;
+                    item: function () {
+                        return item;
                     }
                 }
             });
-
-            modalInstance.result.then(function (selectedItem) {
-                $ctrl.selected = selectedItem;
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
         };
 
-        $ctrl.openComponentModal = function () {
-            var modalInstance = $uibModal.open({
-                animation: $ctrl.animationsEnabled,
-                component: 'modalComponent',
-                resolve: {
-                    items: function () {
-                        return $ctrl.items;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (selectedItem) {
-                $ctrl.selected = selectedItem;
-            }, function () {
-                $log.info('modal-component dismissed at: ' + new Date());
-            });
-        };
+        // $ctrl.openComponentModal = function () {
+        //     var modalInstance = $uibModal.open({
+        //         animation: $ctrl.animationsEnabled,
+        //         component: 'modalComponent',
+        //         resolve: {
+        //             items: function () {
+        //                 return $ctrl.items;
+        //             }
+        //         }
+        //     });
+        //
+        //     modalInstance.result.then(function (selectedItem) {
+        //         $ctrl.selected = selectedItem;
+        //     }, function () {
+        //         $log.info('modal-component dismissed at: ' + new Date());
+        //     });
+        // };
 
 
     }
 
-    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
+    angular.module('myApp').controller('ModalInstanceCtrl', function ($uibModalInstance, item, toaster) {
         var $ctrl = this;
-        $ctrl.items = items;
-        $ctrl.selected = {
-            item: $ctrl.items[0]
-        };
+        $ctrl.item = item;
+        
+        $ctrl.pop = pop;
+
+        function pop () {
+            console.log("The pop function");
+            toaster.pop('Failure', "I TOLD YOU NOT TO PRESS ME!");
+        }
+        
+        // $ctrl.selected = {
+        //     item: $ctrl.items[0]
+        // };
 
         $ctrl.ok = function () {
-            $uibModalInstance.close($ctrl.selected.item);
+            $uibModalInstance.close($ctrl.item);
         };
 
         $ctrl.cancel = function () {
@@ -112,8 +107,10 @@
             close: '&',
             dismiss: '&'
         },
-        controller: function () {
+        controller: function (toaster) {
             var $ctrl = this;
+
+
 
             $ctrl.$onInit = function () {
                 $ctrl.items = $ctrl.resolve.items;
@@ -122,12 +119,19 @@
                 };
             };
 
+            $ctrl.toast = function () {
+                console.log("The pop function");
+                toaster.pop('success', "I TOLD YOU NOT TO PRESS ME!");
+            };
+
             $ctrl.ok = function () {
                 $ctrl.close({$value: $ctrl.selected.item});
             };
 
             $ctrl.cancel = function () {
+                console.log("HI");
                 $ctrl.dismiss({$value: 'cancel'});
+                $ctrl.toast();
             };
         }
     });
