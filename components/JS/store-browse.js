@@ -7,8 +7,8 @@
 
 
     function storeBrowseController( ngCart, $uibModal, $log, User, toaster, sockService) {
-        ngCart.setTaxRate(25.69);
-        ngCart.setShipping(125.99);
+        ngCart.setTaxRate(2.69);
+        ngCart.setShipping(4.99);
 
         var self = this;
 
