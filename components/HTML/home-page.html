@@ -58,19 +58,47 @@
         <button ng-if="!vm.displayName" class="raised primary" ng-click="vm.showEmailLogin()">Login with Email</button>
     </div>
 
-    <md-content layout-padding ng-show="vm.showLogin">
-        <md-input-container>
-            <label>Email</label>
-            <input type="email" id="email" ng-model="vm.email" required>
-        </md-input-container>
-        <md-input-container>
-            <label for="password">Password</label>
-            <input type="password" id="password" ng-model="vm.password" required>
-        </md-input-container>
-        <md-input-container>
-            <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Login</md-button>
-        </md-input-container>
-    </md-content>
+
+
+    <form novalidate name="form" ng-show="vm.showLogin">
+        <div class="form-group" ng-class="{ 'has-error': form.password.$invalid && (form.$submitted || form.password.$touched) }">
+            <label for="password" class="col-sm-2 control-label">Password:</label>
+            <div class="col-sm-10">
+                <input id="password" name="password" class="form-control" type="text" ng-model="vm.password" required />
+                        <span class="help-block" ng-show="form.password.$invalid && (form.$submitted || form.password.$touched) ">
+                            Password is required.
+                        </span>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': form.inputEmail.$invalid && (form.$submitted || form.inputEmail.$touched) }">
+            <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-10">
+                <input id="inputEmail" name="inputEmail" class="form-control" type="email" ng-model="vm.email" required />
+                        <span class="help-block" ng-show="form.inputEmail.$error.required && (form.$submitted || form.inputEmail.$touched) ">
+                            Email is required.
+                        </span>
+                        <span class="help-block" ng-show="form.inputEmail.$error.email && (form.$submitted || form.inputEmail.$touched) ">
+                            Email must be valid.
+                        </span>
+            </div>
+        </div>
+        <md-content layout-padding ng-show="vm.showLogin">
+            <!--<md-input-container>-->
+                <!--<label>Email</label>-->
+                <!--<input type="email" id="email" ng-model="vm.email" required>-->
+                <!--<span class="mainError">We need your email... </span>-->
+            <!--</md-input-container>-->
+            <!--<md-input-container>-->
+                <!--<label for="password">Password</label>-->
+                <!--<input type="password" id="password" ng-model="vm.password" required>-->
+                <!--<span class="mainError">Are you sure thats your password?...</span>-->
+            <!--</md-input-container>-->
+            <md-input-container>
+                <button class="raised primary" ng-click="vm.loginWithEmail()">Login</button>
+            </md-input-container>
+        </md-content>
+    </form>
 <ul class="list-group">
     <!--<li ng-repeat="task in tasks" class="list-group-item">{{task}}</li>-->
 </ul>
